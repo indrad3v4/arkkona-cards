@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Картка 3.1">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Картка 3.1 · Генерацыя форм — Аркона (для Индры)</title>
+<style>
+  :root{
+    --accent:#B4451F; --ink:#1E1B18; --muted:#6B625B; --line:#E4DDD6;
+    --bg:#FBF8F5; --card:#FFFFFF; --soft:#F4EEE8; --ok:#1F7A4D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;
+       padding:18px 14px 140px;-webkit-text-size-adjust:100%}
+  .wrap{max-width:680px;margin:0 auto}
+  .kick{color:var(--accent);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  h1{font-size:25px;line-height:1.22;margin:8px 0 10px;letter-spacing:-.01em}
+  .lead{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .from{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:18px;font-size:14px;color:var(--muted)}
+  .from b{color:var(--ink)}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-bottom:14px}
+  h2{font-size:17px;margin-bottom:6px}
+  .num{color:var(--accent);font-weight:700}
+  .sub{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+  .chips{display:flex;flex-direction:column;gap:8px}
+  .chip{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);background:#fff;
+        border-radius:11px;padding:11px 13px;font-size:15px;cursor:pointer;transition:.12s;text-align:left;width:100%}
+  .chip:active{transform:scale(.995)}
+  .chip .dot{flex:0 0 auto;width:19px;height:19px;border:1.6px solid #CFC6BD;border-radius:50%;margin-top:2px}
+  .chip.on{border-color:var(--accent);background:#FDF3EE}
+  .chip.on .dot{background:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 3.5px #fff}
+  .chip.multi.on .dot{border-radius:5px}
+  textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:11px;padding:11px 12px;
+        font:inherit;font-size:15px;background:#fff;color:var(--ink);margin-top:9px}
+  textarea{min-height:74px;resize:vertical}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(251,248,245,.97);border-top:1px solid var(--line);
+       padding:10px 14px calc(12px + env(safe-area-inset-bottom));backdrop-filter:blur(8px)}
+  .barwrap{max-width:680px;margin:0 auto}
+  .pbar{height:5px;background:var(--soft);border-radius:99px;overflow:hidden;margin-bottom:9px}
+  .pfill{height:100%;background:var(--accent);width:0;transition:width .25s}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  button.b{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:11px;padding:10px 13px;
+        font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+  button.b.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button.b.ghost{background:transparent}
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:118px;background:#241F1B;color:#fff;
+        border-radius:11px;padding:10px 15px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:9}
+  .toast.show{opacity:1}
+  .sum{white-space:pre-wrap;font-size:13.5px;color:var(--muted);background:var(--soft);border:1px solid var(--line);
+       border-radius:11px;padding:13px;margin-top:8px;max-height:260px;overflow:auto}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kick">Аркона · этап 3 · картка 3.1</div>
+  <h1>Генерация форм: что решаем до старта</h1>
+  <div class="lead">Это карточка для тебя, Индра. Тыкай чипы, а я на той стороне соберу ответ и увижу, какую идею мы делаем. Ответы никуда не уходят, пока ты сам не нажмёшь «Отправить».</div>
+  <div class="from"><b>Вход:</b> задача 2.6 (закрыта) · <b>ядро:</b> Idea 8 из PDF + формула Огилви «пересечение культурного напряжения и лучшего себя бренда» · <b>выход 3.1:</b> длинный список форм, ничего не отбрасываем.</div>
+  <div id="qs"></div>
+  <section>
+    <h2><span class="num">Итог</span> — что я с этого пойму</h2>
+    <div class="sub">Собирается автоматически из твоих ответов.</div>
+    <div class="sum" id="sum">—</div>
+    <div class="hint" id="done"></div>
+  </section>
+</div>
+<div class="bar"><div class="barwrap">
+  <div class="pbar"><div class="pfill" id="pfill"></div></div>
+  <div class="btns">
+    <button class="b primary" id="send">Отправить Индре</button>
+    <button class="b" id="copy">Скопировать</button>
+    <button class="b" id="dl">Скачать файлом</button>
+    <button class="b ghost" id="reset">Сбросить</button>
+  </div>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+
+const SINKS=["https://ntfy.envs.net/","https://ntfy.mzte.de/","https://ntfy.sh/"];
+const TOPIC="arkkona-bot-form-0064bd36";
+const MAILTO="1ndradev4@proton.me";
+const TG="https://t.me/indradev_";
+const TITLE="Картка 3.1 — адказы Індры";
+
+const QS=[
+ {id:"axis",t:"Ось генерации",s:"По какой оси расширяем формы? Одна — главная, остальные идут как проверочные на 3.3.",mode:"one",
+  o:["Фрэйм — где ещё человек не остаётся один на один (крёстный, мастерская, школа, маяк, депозитарий)",
+     "Капитал — что именно идея возвращает человеку (время, контроль, достоинство, автономия)",
+     "Роль — кем становится человек рядом с Арконой (взрослый, хозяин, партнёр)",
+     "Свой вариант — напишу ниже"]},
+ {id:"count",t:"Сколько форм минимум",s:"Канон требует длинный список; сколько считаем достаточным, чтобы расчёт не был пустым.",mode:"one",
+  o:["8","12","16","24"]},
+ {id:"impossible",t:"Сколько из них «невозможных»",s:"3.1 обязан дать формы, которые нельзя сделать сегодня — иначе поиск скатится в оффер.",mode:"one",
+  o:["2","3","5","Не задаём правило"]},
+ {id:"seed",t:"Откуда стартуют формы",s:"Что берём за первую партию, чтобы не начинать с чистого листа.",mode:"one",
+  o:["Пять закодированных идей из карточки 5 (крёстный · мастерская · школа · маяк · депозитарий)",
+     "С нуля, от драмы Idea 8 — без опоры на прежние пять",
+     "Смешанно: пять плюс новые ветви"]},
+ {id:"idea8",t:"Идея 8 — ядро или одна из форм",s:"Это определит, генерируем ли мы её производные или конкурирующую семью форм.",mode:"one",
+  o:["Ядро: все формы — производные от Idea 8",
+     "Одна из форм: Idea 8 в пуле наравне с остальными",
+     "Пока не решено — оставить открытым"]},
+ {id:"channels",t:"Обязательные каналы для каждой формы",s:"Форма, которая не может быть проявлена хотя бы в одном канале, — это не форма, а фраза.",mode:"many",
+  o:["Сайт","TG-бот","AEO/SEO-страницы","TG-чаты","Outreach","QR/офлайн"]},
+ {id:"norignt",t:"Форма без права на драму (тест Огилви)",s:"Если форма обостряет конфликт, но бизнес не имеет законного права его решать — что делаем.",mode:"one",
+  o:["Отбрасываем сразу — право первым вопросом","Оставляем в пул, решаем на 3.4","Помечаем риском и держим до 3.3"]},
+ {id:"tags",t:"Мова тэгаў для крыніц",s:"Чтобы считать каждый злотый по источнику, каждому каналу нужна метка в ссылке (start=...).",mode:"one",
+  o:["Да, стандартная: seo-<отрасль> · post-<номер> · out-<номер> · qr","Свой набор — напишу ниже","Пока не вводим"]},
+ {id:"more",t:"Что ещё важно, чего я не спросил",mode:"text"},
+];
+
+const KEY="arkkona-card31-v1";
+let st={}; try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+
+function render(){
+ const box=document.getElementById("qs");box.innerHTML="";
+ QS.forEach((q,i)=>{
+   const s=document.createElement("section");
+   const h=document.createElement("h2");
+   h.innerHTML='<span class="num">'+(i+1)+'</span> · '+q.t;
+   s.appendChild(h);
+   if(q.s){const p=document.createElement("div");p.className="sub";p.textContent=q.s;s.appendChild(p)}
+   if(q.mode==="text"){
+     const ta=document.createElement("textarea");ta.value=st[q.id]||"";
+     ta.placeholder="Пиши как думаешь — потом соберу";
+     ta.oninput=()=>{st[q.id]=ta.value;save();prog()};s.appendChild(ta);
+   }else{
+     const w=document.createElement("div");w.className="chips";
+     q.o.forEach((o,j)=>{
+       const b=document.createElement("button");
+       b.className="chip"+(q.mode==="many"?" multi":"");b.type="button";
+       const d=document.createElement("span");d.className="dot";
+       const t=document.createElement("span");t.textContent=o;
+       b.appendChild(d);b.appendChild(t);
+       const cur=st[q.id];
+       if(q.mode==="one"&&cur===o)b.classList.add("on");
+       if(q.mode==="many"&&Array.isArray(cur)&&cur.includes(o))b.classList.add("on");
+       b.onclick=()=>{
+         if(q.mode==="one"){st[q.id]=(st[q.id]===o?undefined:o);}
+         else{const a=Array.isArray(st[q.id])?st[q.id]:[];const k=a.indexOf(o);k<0?a.push(o):a.splice(k,1);st[q.id]=a;}
+         save();render();
+       };
+       w.appendChild(b);
+     });
+     s.appendChild(w);
+     if(q.id==="axis"||q.id==="tags"){
+       const ta=document.createElement("textarea");ta.value=(st[q.id+"_own"]||"");
+       ta.placeholder="Свой вариант";
+       ta.oninput=()=>{st[q.id+"_own"]=ta.value;save();prog()};s.appendChild(ta);
+     }
+   }
+   box.appendChild(s);
+ });
+ prog();paint();
+}
+function filled(){
+ let n=0;
+ QS.forEach(q=>{const v=st[q.id];if(q.mode==="many"?Array.isArray(v)&&v.length:q.mode==="text"?String(v||"").trim():v)n++});
+ return n;
+}
+function prog(){const p=Math.round(filled()/QS.length*100);document.getElementById("pfill").style.width=p+"%";
+ document.getElementById("done").textContent="Заполнено "+filled()+" из "+QS.length+" ("+p+"%)"}
+function summary(){
+ const L=["КАРТКА 3.1 — генерация форм (Аркона, этап 3)","Вход: задача 2.6 · ядро Idea 8 + формула Огилви",""];
+ QS.forEach(q=>{
+   let v=st[q.id],own=st[q.id+"_own"];
+   if(Array.isArray(v))v=v.join(" · ");
+   if(q.mode==="text"&&!v)v="— не заполнено —";
+   L.push(q.t+": "+(v||"— не выбрано —")+(own?(" | свой: "+own):""));
+ });
+ L.push("","Отправлено со страницы карточки 3.1.");
+ return L.join("\n");
+}
+function paint(){document.getElementById("sum").textContent=summary()}
+
+async function postOnce(){
+ let last=null;
+ for(const s of SINKS){
+  try{
+   const r=await fetch(s,{method:"POST",body:JSON.stringify({topic:TOPIC,title:TITLE,message:summary(),priority:3})});
+   if(r.ok)return true;last="HTTP "+r.status;
+  }catch(e){last=String(e.message||e)}
+ }
+ throw new Error(last||"all sinks failed");
+}
+document.getElementById("send").onclick=async()=>{
+ const b=document.getElementById("send");b.disabled=true;b.textContent="Отправляю…";
+ try{
+  await postOnce();
+  for(let k=0;k<2;k++){try{const s=SINKS[0];const r=await fetch(s,{method:"POST",body:JSON.stringify({topic:TOPIC,title:TITLE+" (копия "+k+")",message:summary(),priority:3})})}catch(e){}}
+  toast("✓ Отправлено — Индра увидел");
+  b.textContent="Отправлено ✓";
+ }catch(e){toast("Не ушло: "+e.message);b.textContent="Попробовать снова"}
+ setTimeout(()=>{b.disabled=false;b.textContent="Отправить Индре"},2600);
+};
+document.getElementById("copy").onclick=async()=>{try{await navigator.clipboard.writeText(summary());toast("Скопировано")}catch(e){toast("Не вышло скопировать")}};
+document.getElementById("dl").onclick=()=>{
+ const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+ a.download="arkkona-kartka-3.1-otvety.txt";a.click();toast("Файл скачан");
+};
+document.getElementById("reset").onclick=()=>{if(confirm("Сбросить все ответы на этой странице?")){st={};save();render()}};
+document.getElementById("sum").addEventListener("click",paint);
+render();paint();
+setInterval(()=>{const t=document.getElementById("sum").textContent;const s=summary();if(t!==s)paint()},400);
+</script>
+</body>
+</html>
