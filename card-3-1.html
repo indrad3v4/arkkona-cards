@@ -62,7 +62,7 @@
 <div class="wrap">
   <div class="kick">Аркона · этап 3 · картка 3.1</div>
   <h1>Генерация форм: что решаем до старта</h1>
-  <div class="lead">Это карточка для тебя, Индра. Тыкай чипы, а я на той стороне соберу ответ и увижу, какую идею мы делаем. Ответы никуда не уходят, пока ты сам не нажмёшь «Отправить».</div>
+  <div class="lead">Это карточка для тебя, Индра — а отправляешь ты её мне, Гермесу. Тыкай чипы, а я на той стороне соберу ответ и увижу, какую идею мы делаем. Ответы никуда не уходят, пока ты сам не нажмёшь «Отправить».</div>
   <div class="from"><b>Вход:</b> задача 2.6 (закрыта) · <b>ядро:</b> Idea 8 из PDF + формула Огилви «пересечение культурного напряжения и лучшего себя бренда» · <b>выход 3.1:</b> длинный список форм, ничего не отбрасываем.</div>
   <div id="qs"></div>
   <section>
@@ -75,7 +75,7 @@
 <div class="bar"><div class="barwrap">
   <div class="pbar"><div class="pfill" id="pfill"></div></div>
   <div class="btns">
-    <button class="b primary" id="send">Отправить Индре</button>
+    <button class="b primary" id="send">Отправить Гермесу</button>
     <button class="b" id="copy">Скопировать</button>
     <button class="b" id="dl">Скачать файлом</button>
     <button class="b ghost" id="reset">Сбросить</button>
@@ -198,10 +198,10 @@ document.getElementById("send").onclick=async()=>{
  const b=document.getElementById("send");b.disabled=true;b.textContent="Отправляю…";
  try{
   await postOnce();
-  toast("✓ Отправлено — Индра увидел");
+  toast("✓ Отправлено — Гермес увидел");
   b.textContent="Отправлено ✓";
  }catch(e){toast("Не ушло: "+e.message);b.textContent="Попробовать снова"}
- setTimeout(()=>{b.disabled=false;b.textContent="Отправить Индре"},2600);
+ setTimeout(()=>{b.disabled=false;b.textContent="Отправить Гермесу"},2600);
 };
 document.getElementById("copy").onclick=async()=>{try{await navigator.clipboard.writeText(summary());toast("Скопировано")}catch(e){toast("Не вышло скопировать")}};
 document.getElementById("dl").onclick=()=>{
