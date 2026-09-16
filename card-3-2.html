@@ -179,7 +179,7 @@ function filled(){
 function prog(){const p=Math.round(filled()/QS.length*100);document.getElementById("pfill").style.width=p+"%";
  document.getElementById("done").textContent="Заполнено "+filled()+" из "+QS.length+" ("+p+"%)"}
 function summary(){
- const L=["КАРТКА 3.2 — 24 основных сообщения (Аркона, этап 3)","Вход: бриф этапа 3 · стратегия A→B · инсайт (мотив + 4 барьера) · драма Idea 8",""];
+ const L=["КАРТКА 3.2 — 24 основных сообщения (Аркона, этап 3)","Вход: сквозной бриф 1 → стратегический бриф 2 → стратегия A→B · 24 кандидата главного сообщения · манифест как эмоциональный регистр",""];
  QS.forEach(q=>{
    let v=st[q.id],own=st[q.id+"_own"];
    if(Array.isArray(v))v=v.join(" · ");
