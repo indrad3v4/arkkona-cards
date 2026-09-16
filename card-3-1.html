@@ -198,7 +198,6 @@ document.getElementById("send").onclick=async()=>{
  const b=document.getElementById("send");b.disabled=true;b.textContent="Отправляю…";
  try{
   await postOnce();
-  for(let k=0;k<2;k++){try{const s=SINKS[0];const r=await fetch(s,{method:"POST",body:JSON.stringify({topic:TOPIC,title:TITLE+" (копия "+k+")",message:summary(),priority:3})})}catch(e){}}
   toast("✓ Отправлено — Индра увидел");
   b.textContent="Отправлено ✓";
  }catch(e){toast("Не ушло: "+e.message);b.textContent="Попробовать снова"}
