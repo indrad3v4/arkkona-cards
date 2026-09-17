@@ -97,7 +97,7 @@ const SINKS=["https://ntfy.envs.net/","https://ntfy.mzte.de/","https://ntfy.sh/"
 const TOPIC="arkkona-bot-form-0064bd36";
 const MAILTO="1ndradev4@proton.me";
 const TG="https://t.me/indradev_";
-const TITLE="Картка 3.1 v3 — драма і комбо: адказы Індры";
+const TITLE="Картка 3.1 v4 — драма, комбо і фестываль: адказы Індры";
 
 const QS=[
 {id:"drama",t:"Драма 3.1 — берём как есть?",mode:"one",o:["Берём как есть", "Убрать строку про близких", "Убрать строку про Ольгу", "Переписать своими словами"]},
@@ -112,7 +112,7 @@ const QS=[
 {id:"success",t:"По какому признаку ты скажешь «это то»?",mode:"text"}
 ];
 
-const KEY="arkkona-card31-v3";
+const KEY="arkkona-card31-v4";
 let st={}; try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){st={}}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
 
@@ -167,7 +167,7 @@ function filled(){
 function prog(){const p=Math.round(filled()/QS.length*100);document.getElementById("pfill").style.width=p+"%";
  document.getElementById("done").textContent="Заполнено "+filled()+" из "+QS.length+" ("+p+"%)"}
 function summary(){
- const L=["КАРТКА 3.1 v3 — драма и комбо (Аркона, этап 3)","Вход: драма 3.1 · шесть комбо тома 2 · фестиваль идей 25→10→гран-при","",""];
+ const L=["КАРТКА 3.1 v4 — драма, комбо и фестиваль (Аркона, этап 3)","Вход: драма 3.1 · шесть комбо тома 2 · сделано 24 идеи, гейты PASS","",""];
  QS.forEach(q=>{
    let v=st[q.id],own=st[q.id+"_own"];
    if(Array.isArray(v))v=v.join(" · ");
