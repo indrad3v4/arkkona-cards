@@ -173,7 +173,7 @@ function filled(){
 function prog(){const p=Math.round(filled()/QS.length*100);document.getElementById("pfill").style.width=p+"%";
  document.getElementById("done").textContent="Заполнено "+filled()+" из "+QS.length+" ("+p+"%)"}
 function summary(){
- const L=["КАРТКА 3.1 — генерация форм (Аркона, этап 3)","Вход: задача 2.6 · ядро Idea 8 + формула Огилви",""];
+ const L=["КАРТКА 3.1 v2 — как представить сообщение (Аркона, этап 3)","Конфликт 2.5 зафиксирован · главное сообщение утверждено: Открыть такое письмо одному страшно. Вместе с Arkkona это обычный разговор.",""];
  QS.forEach(q=>{
    let v=st[q.id],own=st[q.id+"_own"];
    if(Array.isArray(v))v=v.join(" · ");
